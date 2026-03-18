@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Schemes for Entrepreneurs</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:#f4f6f9;
+}
+
+header.navbar {
+    background:#111827;
+    color:white;
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+header.navbar .logo {
+    margin:0;
+}
+
+header.navbar nav a {
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-weight:500;
+}
+
+header.navbar nav a:hover {
+    text-decoration:underline;
+}
+
+.scheme-section {
+    padding:30px 40px;
+}
+
+.scheme-section h1 {
+    text-align:center;
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.search-box {
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.search-box input, .search-box select, .search-box button {
+    padding:10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    margin-right:5px;
+}
+
+.search-box input { width:200px; }
+.search-box select { width:180px; }
+.search-box button { background:#2563eb; color:white; border:none; cursor:pointer; }
+
+.scheme-container {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.scheme-card {
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    position:relative;
+}
+
+.scheme-card.highlight {
+    border:2px solid #16a34a;
+}
+
+.scheme-card:hover {
+    transform:translateY(-5px);
+}
+
+.scheme-card h3 {
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.scheme-card p {
+    font-size:14px;
+    color:gray;
+    height:60px;
+    overflow:hidden;
+}
+
+.scheme-card button {
+    margin-top:10px;
+    padding:6px 10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    background:#16a34a;
+    color:white;
+}
+
+.scheme-card .badge {
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:#16a34a;
+    color:white;
+    padding:3px 6px;
+    font-size:12px;
+    border-radius:4px;
+}
+
+@media(max-width:900px){
+    .scheme-container{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:600px){
+    .scheme-container{grid-template-columns:1fr;}
+    .search-box input, .search-box select{width:70%; margin-bottom:5px;}
+    .search-box button{width:50%;}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+<h2 class="logo">StartSmart AI</h2>
+<nav>
+<a href="Dashboard.html">Home</a>
+<a href="Books.html">Books</a>
+<a href="Schemes.html">Schemes</a>
+<a href="Finance.html">Finance</a>
+<a href="AboutUs.html">About Us</a>
+</nav>
+</header>
+
+<section class="scheme-section">
+<h1>Indian Startup & Business Government Schemes</h1>
+
+<div class="search-box">
+<input type="text" id="schemeSearch" placeholder="Search schemes...">
+<select id="categoryFilter">
+    <option value="">All Categories</option>
+    <option value="startup">Startup</option>
+    <option value="finance">Finance</option>
+    <option value="technology">Technology</option>
+    <option value="skill">Skill Development</option>
+    <option value="innovation">Innovation</option>
+</select>
+<button id="searchBtn">Search</button>
+</div>
+
+<div class="scheme-container" id="schemeContainer">
+<!-- Scheme cards dynamically inserted here -->
+</div>
+</section>
+
+<script>
+// Sample government schemes dataset
+const schemes = [
+    {name:"Startup India", desc:"Support for startups through funding, tax benefits and mentorship.", category:"startup", recommended:true, link:"https://www.startupindia.gov.in"},
+    {name:"MUDRA Loan", desc:"Loans up to ₹10 lakh for small businesses.", category:"finance", recommended:false, link:"https://www.mudra.org.in"},
+    {name:"Stand Up India", desc:"Loans for women and SC/ST entrepreneurs.", category:"startup", recommended:true, link:"#"},
+    {name:"Digital India", desc:"Support for technology driven startups.", category:"technology", recommended:false, link:"#"},
+    {name:"Atal Innovation Mission", desc:"Promotes innovation and entrepreneurship among students and startups.", category:"innovation", recommended:true, link:"#"},
+    {name:"Pradhan Mantri Kaushal Vikas Yojana", desc:"Skill development program for youth.", category:"skill", recommended:false, link:"#"},
+    {name:"Make in India", desc:"Support for manufacturing startups and entrepreneurship.", category:"startup", recommended:false, link:"#"},
+    {name:"MSME Development Scheme", desc:"Support for small and medium enterprises across India.", category:"finance", recommended:true, link:"#"},
+];
+
+// Function to display schemes
+function displaySchemes(list) {
+    const container = document.getElementById("schemeContainer");
+    container.innerHTML = "";
+
+    if(list.length === 0){
+        container.innerHTML = "<p>No schemes found. Try another search.</p>";
+        return;
+    }
+
+    list.forEach(scheme => {
+        const card = document.createElement("div");
+        card.className = "scheme-card";
+        if(scheme.recommended) card.classList.add("highlight");
+
+        card.innerHTML = `
+            <h3>${scheme.name}</h3>
+            <p>${scheme.desc}</p>
+            ${scheme.recommended ? '<div class="badge">Recommended</div>' : ''}
+            <button onclick="window.open('${scheme.link}','_blank')">Learn More</button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Search function
+function searchSchemes() {
+    const query = document.getElementById("schemeSearch").value.trim().toLowerCase();
+    const category = document.getElementById("categoryFilter").value;
+
+    const filtered = schemes.filter(s => 
+        (s.name.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query)) &&
+        (category === "" || s.category === category)
+    );
+
+    // Show recommended schemes first
+    filtered.sort((a,b)=> (b.recommended === true) - (a.recommended === true));
+
+    displaySchemes(filtered);
+}
+
+// Add event listener
+document.getElementById("searchBtn").addEventListener("click", searchSchemes);
+document.getElementById("schemeSearch").addEventListener("keypress", function(e){
+    if(e.key === "Enter") searchSchemes();
+});
+document.getElementById("categoryFilter").addEventListener("change", searchSchemes);
+
+// Load top recommended schemes on page load
+window.onload = function(){
+    const topSchemes = schemes.filter(s => s.recommended || s.category === "startup" || s.category === "finance");
+    topSchemes.sort((a,b)=> (b.recommended === true) - (a.recommended === true));
+    displaySchemes(topSchemes);
+};
+</script>
+
+</body>
+</html>

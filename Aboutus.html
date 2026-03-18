@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | StartSmart AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & GLOBAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #111827;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 60px;
+            background: #14213d;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            width: 35px;
+        }
+
+        nav a {
+            margin-left: 25px;
+            font-size: 18px;
+            color: white;
+        }
+
+        nav a:hover {
+            color: #00c3ff;
+        }
+
+        /* HERO */
+        .hero {
+            height: 350px;
+            width: 100%;
+            background: url('aboutimage.jpeg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 60px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            padding: 60px 10%;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text img {
+            width: 350px;
+            height: 350px;
+            float: left;
+            margin-right: 15px;
+            border-radius: 12px;
+        }
+
+        .about-text h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .about-text p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 17px;
+        }
+
+        /* VISION SECTION */
+        .vision-section {
+            padding: 40px 10%;
+        }
+
+        .vision-card {
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+            text-align: center;
+        }
+
+        .vision-card h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .vision-card p {
+            line-height: 1.7;
+            color: #444;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #14213d;
+            color: white;
+            padding: 40px 10%;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-logo {
+            color: #ff7a00;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .footer-section h3 {
+            color: #ff7a00;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            transition: 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff7a00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 14px;
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 900px) {
+            .about-text img {
+                width: 100%;
+                float: none;
+                margin: 0 0 15px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav a {
+                font-size: 16px;
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+            <h2>StartSmart AI</h2>
+        </div>
+        <nav>
+            <a href="Dashboard.html">Home</a>
+            <a href="Books.html">Books</a>
+            <a href="Schemes.html">Schemes</a>
+            <a href="Finance.html">Finance</a>
+            <a href="Aboutus.html">About Us</a>
+        </nav>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About Our Platform</h2>
+                <img src="image/1.jpeg" alt="About Image">
+                <p>Our platform is an AI-powered startup support system designed to help aspiring entrepreneurs learn,
+                    plan, and manage their businesses more effectively.</p>
+                <p>It combines AI-based mentorship, government schemes information, and financial insights into one
+                    easy-to-use platform.</p>
+                <p>The system integrates an AI chatbot that answers questions on Business Model Development (BDM),
+                    startup planning, funding opportunities, and entrepreneurship with clear and beginner-friendly
+                    guidance.</p>
+                <p>Users can explore recommended business books, access government schemes, and manage basic financial
+                    records to make informed decisions and turn ideas into successful ventures.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION SECTION -->
+    <section class="vision-section">
+        <div class="vision-card">
+            <h2>Our Vision</h2>
+            <p>We aim to empower aspiring entrepreneurs and small business owners with AI-driven guidance, financial
+                insights, and access to government support, making business planning simple, actionable, and accessible
+                to everyone.</p>
+            <p>Through continuous innovation, we strive to build a reliable and accessible digital ecosystem that
+                simplifies entrepreneurship, encourages innovation, and helps startups grow sustainably in the modern
+                digital economy.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 class="footer-logo">SmartStartAI</h2>
+            </div>
+            <div class="footer-section">
+                <h3>Helpful Links</h3>
+                <ul>
+                    <li><a href="Dashboard.html">Home</a></li>
+                    <li><a href="Books.html">Books</a></li>
+                    <li><a href="Schemes.html">Schemes</a></li>
+                    <li><a href="Finance.html">Finance Tracker</a></li>
+                    <li><a href="Aboutus.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@smartstartai.com</p>
+                <p>Phone: +91 9876543210</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 SmartStartAI | All Rights Reserved</div>
+    </footer>
+
+</body>
+
+</html>
