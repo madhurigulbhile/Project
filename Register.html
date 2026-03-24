@@ -1,514 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | StartSmart AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        /* RESET & GLOBAL */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | StartSmart AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        body {
-            background: #f4f6f9;
-            color: #111827;
-        }
-
-        /* HEADER */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 60px;
-            background: #14213d;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .logo img {
-            width: 35px;
-        }
-
-        nav a {
-            text-decoration: none;
-            margin-left: 25px;
-            color: white;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #00c3ff;
-        }
-
-        /* HERO + REGISTER */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 50px 10%;
-            gap: 50px;
-        }
-
-        .info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .info h1 {
-            font-size: 42px;
-            color: #0d3b66;
-            margin-bottom: 20px;
-        }
-
-        .info p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .info ul {
-            margin-left: 20px;
-            line-height: 1.8;
-            font-size: 17px;
-        }
-
-        /* REGISTER CARD */
-        .register-card {
-            flex: 1;
-            min-width: 300px;
-            background: white;
-            padding: 40px;
-            border-radius: 14px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .register-card h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #14213d;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            outline: none;
-            transition: .3s;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #1d6fdc;
-        }
-
-        textarea {
-            height: 70px;
-            resize: none;
-        }
-
-        .password-msg {
-            font-size: 13px;
-            color: red;
-            margin-top: 5px;
-        }
-
-        button {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: #ff7a00;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background: #e96c00;
-        }
-
-        .roles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .role {
-            padding: 8px 14px;
-            border-radius: 20px;
-            border: 1px solid #1d6fdc;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .role.active {
-            background: #1d6fdc;
-            color: white;
-        }
-
-        /* LOGIN MODAL */
-        .login-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .login-box {
-            width: 400px;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: relative;
-        }
-
-        .login-box input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 20px;
-            cursor: pointer;
-            color: #555;
-        }
-
-        .or {
-            margin: 10px 0;
-        }
-
-        .google-btn {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            background: grey;
-            cursor: pointer;
-        }
-
-        .google-btn:hover {
-            background: #f2f2f2;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #14213d;
-            color: white;
-            padding: 40px 10%;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-logo {
-            color: #ff7a00;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .footer-section h3 {
-            color: #ff7a00;
-            margin-bottom: 10px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin: 8px 0;
-        }
-
-        .footer-section ul li a {
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #ff7a00;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            margin-top: 30px;
-            padding-top: 15px;
-            font-size: 14px;
-        }
-
-        /* MEDIA QUERIES */
-        @media(max-width:900px) {
-            .hero {
-                flex-direction: column;
-                padding: 60px 10%;
-                gap: 30px;
-            }
-        }
-
-        @media(max-width:600px) {
-            header {
-                padding: 15px 20px;
-            }
-
-            nav a {
-                font-size: 16px;
-                margin-left: 15px;
-            }
-        }
-    </style>
+<style>
+/* GLOBAL */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,#0f172a,#020617);color:white;}
+/* CARD */
+.register-card{width:420px;background:rgba(255,255,255,0.05);padding:40px;border-radius:16px;backdrop-filter:blur(15px);box-shadow:0 10px 30px rgba(0,0,0,0.4);text-align:center;}
+.register-card h2{margin-bottom:20px;}
+input, select{width:100%;padding:12px;margin:10px 0;border:none;border-radius:8px;outline:none;}
+button{width:100%;padding:12px;border:none;border-radius:8px;background:linear-gradient(45deg,#7c3aed,#ec4899);color:white;cursor:pointer;margin-top:10px;}
+button:hover{opacity:0.9;}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.role{padding:6px 12px;border-radius:20px;border:1px solid #7c3aed;cursor:pointer;font-size:13px;}
+.role.active{background:#7c3aed;}
+#msg{margin-top:10px;font-size:14px;}
+a{color:#cbd5f5;text-decoration:none;font-size:14px;}
+a:hover{color:white;}
+</style>
 </head>
 
 <body>
+<div class="register-card">
+<h2>🚀 Create Account</h2>
 
-    <header>
-        <div class="logo">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
-            <h2>StartSmart AI</h2>
-        </div>
-        <nav>
-            <a href="Dashboard.html">Dashboard</a>
-            <a href="Aboutus.html">About Us</a>
-            <a href="#" onclick="openLogin()">Login</a>
-            <a href="Register.html">Register</a>
-        </nav>
-    </header>
+<form id="registerForm">
 
-    <section class="hero">
-        <div class="info">
-            <h1>Build Your Startup with AI Guidance</h1>
-            <p>Our AI-powered platform helps aspiring entrepreneurs learn, plan, and manage their businesses through
-                intelligent guidance and structured resources.</p>
-            <ul>
-                <li>Step-by-step Business Model Development (BDM)</li>
-                <li>AI-based answers to startup & entrepreneurship questions</li>
-                <li>Discover government schemes & support programs</li>
-                <li>Track income and expenses for financial planning</li>
-                <li>Access recommended books & learning resources</li>
-            </ul>
-        </div>
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="password" id="password" placeholder="Password" required>
+<input type="text" id="field" placeholder="Startup Field">
 
-        <div class="register-card">
-            <h2>Create Account</h2>
-            <form id="registerForm">
-                <div class="input-group"><input type="text" placeholder="Full Name" id="name" required></div>
-                <div class="input-group"><input type="email" placeholder="Email Address" id="email" required></div>
-                <div class="input-group"><input type="tel" placeholder="Phone Number" id="phone" pattern="[0-9]{10}"
-                        maxlength="10" required></div>
-                <div class="input-group"><input type="text" placeholder="Business / Startup Field" id="field"></div>
-                <div class="input-group"><input type="password" placeholder="Create Password" id="password" required>
-                    <div class="password-msg" id="passwordMsg"></div>
-                </div>
-                <div class="input-group"><input type="password" placeholder="Confirm Password" id="confirm" required>
-                    <div class="password-msg" id="confirmMsg"></div>
-                </div>
-                <div class="roles">
-                    <div class="role">Startup</div>
-                    <div class="role">Investor</div>
-                    <div class="role">Mentor</div>
-                    <div class="role">Student</div>
-                    <div class="role">Explorer</div>
-                </div>
-                <div class="input-group">
-                    <select id="experience">
-                        <option>Experience Level</option>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Experienced</option>
-                    </select>
-                </div>
-                <div class="input-group"><textarea placeholder="Describe your startup idea"></textarea></div>
-                <button type="submit">Register</button>
-            </form>
-        </div>
-    </section>
+<!-- ROLE -->
+<div class="roles">
+<div class="role">Startup</div>
+<div class="role">Investor</div>
+<div class="role">Mentor</div>
+<div class="role">Student</div>
+</div>
 
-    <!-- Login Modal -->
-    <div class="login-modal" id="loginModal">
-        <div class="login-box">
-            <span class="close-btn" onclick="closeLogin()">✖</span>
-            <h2>LOGIN</h2>
-            <form id="loginForm">
-                <input type="email" placeholder="Email" id="loginEmail" required>
-                <input type="password" placeholder="Password" id="loginPassword" required>
-                <div id="loginMsg" class="password-msg"></div>
-                <button type="submit">Login</button>
-            </form>
-            <p class="or">Login with others</p>
-            <button class="google-btn">Login with Google</button>
-        </div>
-    </div>
+<select id="experience">
+<option value="" disabled selected>Experience Level</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Experienced</option>
+</select>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h2 class="footer-logo">SmartStartAI</h2>
-            </div>
-            <div class="footer-section">
-                <h3>Helpful Links</h3>
-                <ul>
-                    <li><a href="Dashboard.html">Home</a></li>
-                    <li><a href="Dashboard.html">Dashboard</a></li>
-                    <li><a href="reports.html">Reports</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="Aboutus.html">About Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Useful Tools</h3>
-                <ul>
-                    <li><a href="Books.html">Books</a></li>
-                    <li><a href="Schemes.html">Schemes</a></li>
-                    <li><a href="finance-tracker.html">Finance Tracker</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: support@smartstartai.com</p>
-                <p>Phone: +91 9876543210</p>
-            </div>
-        </div>
-        <div class="footer-bottom">© 2026 SmartStartAI | All Rights Reserved</div>
-    </footer>
+<button type="submit">Register</button>
+<p id="msg"></p>
+</form>
 
-    <script>
-        // Password validation
-        const password = document.getElementById("password");
-        const confirm = document.getElementById("confirm");
-        const passwordMsg = document.getElementById("passwordMsg");
-        const confirmMsg = document.getElementById("confirmMsg");
+<p style="margin-top:15px;">
+Already have account? <a href="login.html">Login</a>
+</p>
+</div>
 
-        function validatePassword() {
-            let pass = password.value;
-            let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
-            if (!pattern.test(pass)) {
-                passwordMsg.innerText = "Password must contain 6+ characters, 1 uppercase, 1 lowercase, 1 number & 1 special symbol";
-                return false;
-            } else {
-                passwordMsg.innerText = "";
-                return true;
-            }
-        }
+<script>
+// ROLE SELECT
+let roles = document.querySelectorAll(".role");
+let selectedRole = "";
+roles.forEach(role=>{
+  role.onclick = function(){
+    roles.forEach(r=>r.classList.remove("active"));
+    this.classList.add("active");
+    selectedRole = this.innerText;
+  }
+});
 
-        function checkConfirm() {
-            if (password.value !== confirm.value) {
-                confirmMsg.innerText = "Passwords do not match";
-                return false;
-            } else {
-                confirmMsg.innerText = "";
-                return true;
-            }
-        }
+// REGISTER API
+document.getElementById("registerForm").addEventListener("submit", async function(e){
+e.preventDefault();
+const msg = document.getElementById("msg");
 
-        password.addEventListener("keyup", validatePassword);
-        confirm.addEventListener("keyup", checkConfirm);
+// VALIDATION
+if(!selectedRole){msg.style.color="red"; msg.innerText="Please select a role!"; return;}
+if(!document.getElementById("experience").value){msg.style.color="red"; msg.innerText="Please select experience!"; return;}
 
-        document.getElementById("registerForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            if (!validatePassword() || !checkConfirm()) { return; }
+const user = {
+name: document.getElementById("name").value,
+email: document.getElementById("email").value,
+password: document.getElementById("password").value,
+field: document.getElementById("field").value,
+role: selectedRole,
+experience: document.getElementById("experience").value
+};
 
-            let user = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                field: document.getElementById("field").value,
-                password: password.value
-            };
+try{
+const res = await fetch("http://localhost:5000/register",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(user)
+});
+const data = await res.json();
 
-            localStorage.setItem("startupUser", JSON.stringify(user));
-            alert("Registration Successful!");
-            document.getElementById("registerForm").reset();
-            passwordMsg.innerText = "";
-            confirmMsg.innerText = "";
-        });
-
-        // Role selection
-        let roles = document.querySelectorAll(".role");
-        let selectedRole = "";
-        roles.forEach(role => {
-            role.onclick = function () {
-                roles.forEach(r => r.classList.remove("active"));
-                this.classList.add("active");
-                selectedRole = this.innerText;
-            }
-        });
-
-        // Login modal
-        function openLogin() { document.getElementById("loginModal").style.display = "flex"; }
-        function closeLogin() { document.getElementById("loginModal").style.display = "none"; }
-
-        document.getElementById("loginForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            let storedUser = JSON.parse(localStorage.getItem("startupUser"));
-            let email = document.getElementById("loginEmail").value;
-            let password = document.getElementById("loginPassword").value;
-            let msg = document.getElementById("loginMsg");
-            if (!storedUser) {
-                msg.innerText = "No registered user found.";
-                return;
-            }
-            if (email === storedUser.email && password === storedUser.password) {
-                msg.style.color = "green"; msg.innerText = "";
-                alert("Login Successful!");
-                closeLogin();
-            } else {
-                msg.style.color = "red"; msg.innerText = "Invalid Email or Password";
-            }
-        });
-    </script>
+if(data.message.toLowerCase().includes("success")){
+msg.style.color="lightgreen";
+msg.innerText = "Registration successful ✅";
+setTimeout(()=>{window.location.href = "login.html";},1500);
+}else{
+msg.style.color="red";
+msg.innerText = data.message;
+}
+}catch(error){
+msg.style.color="red";
+msg.innerText = "Server not running ❌";
+}
+});
+</script>
 </body>
-
 </html>

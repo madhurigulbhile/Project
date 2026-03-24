@@ -2,283 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StartSmart AI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: white;
-        }
-
-        /* NAVBAR */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 60px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        nav a {
-            margin: 0 15px;
-            color: #cbd5f5;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #7c3aed, #ec4899);
-            padding: 8px 16px;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        /* HERO */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px;
-            gap: 40px;
-        }
-
-        .hero h1 {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .hero h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #a5b4fc;
-        }
-
-        .hero p {
-            color: #cbd5f5;
-            margin-bottom: 15px;
-        }
-
-        .hero img {
-            width: 420px;
-            border-radius: 15px;
-        }
-
-        /* SECTIONS */
-        .section {
-            padding: 60px;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 28px;
-        }
-
-        /* FEATURES */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 90px;
-            margin-bottom: 10px;
-        }
-
-        /* STEPS */
-        .steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .step {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-        }
-
-        /* SUCCESS SECTION */
-        .success {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .card img.large {
-            width: 85%;
-            max-width: 350px;
-            margin: 15px auto;
-        }
-
-        .story-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .story-card img {
-            width: 90%;
-            margin: auto;
-            border-radius: 10px;
-        }
-
-        .book-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .book img {
-            width: 100%;
-            max-width: 300px;
-            margin: auto;
-            border-radius: 10px;
-        }
-
-        /* CTA */
-        .cta {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-            text-align: center;
-            padding: 60px;
-            background: linear-gradient(45deg, #9a79d2e1, #ec4899);
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #030914;
-            padding: 40px 60px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .footer h3 {
-            margin-bottom: 10px;
-        }
-
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer a {
-            color: #cbd5f5;
-            text-decoration: none;
-            display: block;
-            margin: 5px 0;
-        }
-
-        .footer a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            color: #94a3b8;
-        }
-
-        /* RESPONSIVE */
-        @media(max-width:900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero img {
-                width: 100%;
-            }
-
-            .book-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .cta-box {
-            width: 500px;
-            background: #030e4f;
-            padding: 50px;
-            text-align: center;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        @media(max-width:800px) {
-
-            .book-grid,
-            .story-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card img {
-            width: 80%;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<header class="navbar">
-    <h2>StartSmart AI</h2>
-    <nav>
-        <a href="Dashboard.html">Home</a>
-        <a href="books.html">Books</a>
-        <a href="finance.html">Finance</a>
-        <a href="schemes.html">Schemes</a>
-        <a href="aboutus.html">About Us</a>
-    </nav>
+    <header class="navbar">
+        <h2>StartSmart AI</h2>
         <div>
-            <a href="Register.html#" class="btn">Login In</a>
+            <a href="Login.html" class="btn">Login In</a>
             <a href="Register.html" class="btn">Register</a>
         </div>
     </header>
@@ -294,35 +29,31 @@
             </p>
             <p>Transform your idea into a successful business using AI-powered tools.</p>
             <a href="Register.html">
-                <button class="btn">Get Started </button>
+                <button class="btn">Get Started</button>
             </a>
         </div>
-        <img src="image/chatbot.avif" alt="AI Startup">
+        <img src="image/Robot.png" alt="AI Startup">
     </section>
 
     <section class="section">
         <h2>Platform Features</h2>
         <div class="grid">
-            <div class="card"><img src="image/books.png">
+            <div class="card"><img src="image/books.png" alt="">
                 <h3>Learn Business</h3>
                 <p>Startup courses and business guides.</p>
             </div>
-            <div class="card"><img src="image/schemes.jpeg">
+            <div class="card"><img src="image/schemes.jpeg" alt="">
                 <h3>Government Schemes</h3>
                 <p>Startup India and MSME programs.</p>
             </div>
-            <div class="card"><img src="image/finance.jpg">
+            <div class="card"><img src="image/finance.jpg" alt="">
                 <h3>Finance Dashboard</h3>
                 <p>Track profits and expenses.</p>
-            </div>
-            <div class="card"><img src="image/network.png">
-                <h3>Networking</h3>
-                <p>Connect with entrepreneurs.</p>
             </div>
         </div>
     </section>
 
-    <section class="section success">
+    <section class="section steps">
         <h2>How StartSmart AI Works</h2>
         <div class="steps">
             <div class="step">
@@ -343,66 +74,31 @@
             </div>
         </div>
     </section>
-    <section class="section success">
-        <!-- Startup Success -->
-        <div class="card">
-            <h2>Track Your Startup Success</h2>
-            <p>Funding Goal: $100,000 (75%)</p>
-            <img style="width: 30%;" src="image/analytics.png">
-            <p>Marketing Reach: 50K visitors</p>
-        </div>
 
-        <!-- Stories -->
+    <section class="section success">
         <div class="card">
             <h2>Startup Success Stories</h2>
-
             <div class="story-grid">
-
                 <div class="story-card">
-                    <img src="image/idea_to_startup.jpg">
+                    <img src="image/idea_to_startup.jpg" alt="">
                     <h3>Idea to Startup</h3>
                     <p>How founders turned ideas into businesses.</p>
                 </div>
 
                 <div class="story-card">
-                    <img src="image/young_entrepreneurs.jpg">
+                    <img src="image/young_entrepreneurs.jpg" alt="">
                     <h3>Young Entrepreneurs</h3>
                     <p>Inspiring journeys of Indian startups.</p>
                 </div>
-
             </div>
         </div>
 
-        <!-- Books -->
         <div class="card">
-            <h2>Recommended Books</h2>
-
-            <div class="book-grid">
-
-                <div class="book">
-                    <img src="image/rich_dad_poor_dad.jpg">
-                    <p>Rich Dad Poor Dad</p>
-                </div>
-
-                <div class="book">
-                    <img src="image/the_lean_startup.png">
-                    <p>The Lean Startup</p>
-                </div>
-
-                <div class="book">
-                    <img src="image/zero_to_one.webp">
-                    <p>Zero to One</p>
-                </div>
-
-                <div class="book">
-                    <img src="image/think_and_grow_rich.jpg">
-                    <p>Think and Grow Rich</p>
-                </div>
-
-            </div>
+            <h2>Trending Books</h2>
+            <div id="trending" class="books"></div>
         </div>
-
     </section>
+
     <section class="cta">
         <div class="cta-box">
             <h2>Start Your Startup Journey Today</h2>
@@ -414,9 +110,7 @@
     </section>
 
     <footer class="footer">
-
         <div class="footer-container">
-
             <div>
                 <h2>SmartStartAI</h2>
             </div>
@@ -424,7 +118,7 @@
             <div>
                 <h3>Helpful Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="Home.html">Home</a></li>
                     <li><a href="dashboard.html">Dashboard</a></li>
                     <li><a href="report.html">Reports</a></li>
                     <li><a href="profile.html">Profile</a></li>
@@ -444,14 +138,162 @@
                 <p>support@smartstartai.com</p>
                 <p>+91 9876543210</p>
             </div>
-
         </div>
 
         <div class="footer-bottom">
             <p>© 2026 SmartStartAI</p>
         </div>
     </footer>
+    <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot" class="chatbot-hidden">
+        <div class="chat-header"> <span>🤖 StartSmart AI</span>
+            <div> <button class="clear-btn" onclick="clearChats()">Clear</button> <button class="close-btn"
+                    onclick="toggleChatbot()">✖</button> </div>
+        </div>
+        <div id="chat-box">
+            <div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>
+        </div>
+        <div class="chat-input-area"> <input type="text" id="userInput" placeholder="Ask your question..." /> <button
+                onclick="sendMessage()">Send</button> </div>
+    </div>
+    <script>
+        /* ================= CHATBOT ================= */
 
+        function toggleChatbot() {
+            document.getElementById("chatbot").classList.toggle("chatbot-hidden");
+        }
+
+        function saveChats() {
+            localStorage.setItem("startsmart_chat", document.getElementById("chat-box").innerHTML);
+        }
+
+        function loadChats() {
+            const saved = localStorage.getItem("startsmart_chat");
+            const chatBox = document.getElementById("chat-box");
+
+            if (!chatBox) return;
+
+            chatBox.innerHTML = saved ||
+                `<div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>`;
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function clearChats() {
+            localStorage.removeItem("startsmart_chat");
+            loadChats();
+        }
+
+        async function sendMessage() {
+            const inputEl = document.getElementById("userInput");
+            const chatBox = document.getElementById("chat-box");
+
+            if (!inputEl || !chatBox) return;
+
+            const input = inputEl.value.trim();
+            if (!input) return;
+
+            // User message
+            const userMsg = document.createElement("div");
+            userMsg.className = "user-message";
+            userMsg.innerText = input;
+            chatBox.appendChild(userMsg);
+
+            inputEl.value = "";
+
+            // Loading message
+            const loading = document.createElement("div");
+            loading.className = "bot-message";
+            loading.innerText = "Typing...";
+            chatBox.appendChild(loading);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveChats();
+
+            try {
+                const res = await fetch("http://localhost:5000/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: input })
+                });
+
+                if (!res.ok) throw new Error("Server response failed");
+
+                const data = await res.json();
+                loading.innerText = data.reply || "No response from AI.";
+
+            } catch (err) {
+                loading.innerText = "⚠️ Server error. Check backend.";
+                console.error(err);
+            }
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveChats();
+        }
+
+
+        /* ================= BOOKS ================= */
+
+        async function fetchBooks(query) {
+            const container = document.getElementById("trending");
+            if (!container) return;
+
+            container.innerHTML = "Loading...";
+
+            try {
+                const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=6`);
+                const data = await res.json();
+
+                if (!data.items) {
+                    container.innerHTML = "No books found";
+                    return;
+                }
+
+                displayBooks(data.items);
+
+            } catch (error) {
+                container.innerHTML = "Error loading books";
+            }
+        }
+
+        function displayBooks(books) {
+            const container = document.getElementById("trending");
+            container.innerHTML = "";
+
+            books.forEach(book => {
+                const info = book.volumeInfo;
+
+                const card = document.createElement("div");
+                card.className = "book-card";
+
+                card.onclick = () => window.open(info.previewLink);
+
+                card.innerHTML = `
+            <img src="${info.imageLinks?.thumbnail || 'https://via.placeholder.com/100x140'}">
+            <p>${info.title}</p>
+        `;
+
+                container.appendChild(card);
+            });
+        }
+
+
+        /* ================= INIT ================= */
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            loadChats();
+
+            const inputEl = document.getElementById("userInput");
+            if (inputEl) {
+                inputEl.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter") sendMessage();
+                });
+            }
+
+            fetchBooks("startup business");
+        });
+    </script>
 </body>
 
 </html>

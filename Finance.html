@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+
+<link rel="stylesheet" href="Finance.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar">
+
+<h1 class="main-title">Finance Tracker</h1>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="Finance.html">Dashboard</a></li>
+<li><a href="records.html">Records</a></li>
+<li><a href="Reports.html">Reports</a></li>
+
+</ul>
+
+</nav>
+<section id="dashboard-section"></section>
+<section id="records-section"></section>
+<section id="charts-section"></section>
+ 
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Manage Your Business Finances</h1>
+
+<p>Track revenue, monitor expenses and analyze profit.</p>
+
+<div class="hero-buttons">
+<!-- <button class="btn1">Get Started</button>
+<button class="btn2">View Reports</button> -->
+<a href="Register.html" class="btn1">Get Started</a>
+<a href="Reports.html" class="btn2">View Reports</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Navigation Cards -->
+
+<section class="cards">
+<a href="#dashboard-section" style="text-decoration: none; color: inherit;">
+<div class="card">
+<h3>Dashboard</h3>
+<p>View revenue & profit</p>
+</div>
+
+<a href="records.html" style="text-decoration: none; color: inherit;">
+<div class="card">
+<h3>Records</h3>
+<p>Add income & expenses</p>
+</div>
+
+<a href="Reports.html" style="text-decoration: none; color: inherit;">
+
+<div class="card">
+<h3>Reports</h3>
+<p>Visualize spending</p>
+</div>
+
+
+</section>
+
+
+<!-- Business Overview -->
+
+<section class="overview">
+
+<h2>Business Overview</h2>
+
+<div class="stats">
+
+<div class="stat revenue">
+<h3>Total Revenue</h3>
+<p id="totalRevenue">₹ 0</p>
+</div>
+
+<div class="stat expense">
+<h3>Total Expense</h3>
+<p id="totalExpense">₹ 0</p>
+</div>
+
+<div class=" stat Netprofit">
+<h3>Net Profit</h3>
+<p id="netProfit">₹ 0</p>
+</div>
+
+</div>
+<div class="charts">
+
+    <div class="chart-box">
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+</div>
+
+
+<script src="Finance.js"></script>
+
+</div>
+
+</section>
+</section>
+
+
+<section class="overview">
+
+
+
+
+</section>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="overview">
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- Logo -->
+<div class="footer-section">
+<h2 class="footer-logo">SmartStartAI</h2>
+</div>
+
+<!-- Helpful Links -->
+<div class="footer-section">
+<h3>Helpful Links</h3>
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Finance.html">Dashboard</a></li>
+<li><a href="reports.html">Reports</a></li>
+<li><a href="Aboutus.html">About Us</a></li>
+</ul>
+</div>
+
+<!-- Useful Tools -->
+<div class="footer-section">
+<h3>Useful Tools</h3>
+<ul>
+<li><a href="books.html">Books</a></li>
+<li><a href="schemes.html">Schemes</a></li>
+<li><a href="Finance.html">Finance Tracker</a></li>
+</ul>
+</div>
+
+<!-- Contact Us -->
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>Email: support@smartstartai.com</p>
+<p>Phone: +91 9876543210</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 SmartStartAI | All Rights Reserved</p>
+</div>
+
+</footer>
+  <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot" class="chatbot-hidden">
+        <div class="chat-header"> <span>🤖 StartSmart AI</span>
+            <div> <button class="clear-btn" onclick="clearChats()">Clear</button> <button class="close-btn"
+                    onclick="toggleChatbot()">✖</button> </div>
+        </div>
+        <div id="chat-box">
+            <div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>
+        </div>
+        <div class="chat-input-area"> <input type="text" id="userInput" placeholder="Ask your question..." /> <button
+                onclick="sendMessage()">Send</button> </div>
+    </div>
+<script src="Finance.js"></script>
+
+</body>
+</html>

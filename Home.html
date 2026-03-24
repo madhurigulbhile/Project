@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup AI Platform</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    background: black;
+    color: white;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 200px;
+    background: rgb(14, 13, 13);
+    position: fixed;
+}
+
+.sidebar h2 {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    gap: 10px;
+}
+
+.sidebar ul li:hover {
+    background: #5982c8;
+}
+
+.sidebar ul li a i {
+    width: 20px;
+}
+
+/* Page Content */
+.page {
+    margin-left: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top Bar */
+.top-bar {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+}
+
+/* Profile Button */
+.profile-btn {
+    background: rgb(246, 244, 240);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+.profile-btn i {
+    font-size: 30px;
+}
+
+/* Profile Card */
+.profile-card {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 270px;
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.profile-card h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 7px;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Buttons */
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn,
+.save-btn {
+    flex: 1;
+    background: #0aa5e7;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 8px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    padding: 40px;
+}
+
+/* Hero Section (Text Left, Image Right) */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    width: 50%;
+    max-width: 500px;
+}
+.hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #f0f4f6;
+}
+.hero-text h2 {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #6c05cb;
+}
+
+.hero-text p {
+    font-size: 16px;
+    color: #cbd5f5;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Hero Button */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #7c3aed, #ec4899);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(236,72,153,0.5);
+}
+
+/* Hero Image */
+.hero-image {
+    width: 50%;
+    max-width: 500px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* Sections */
+.section {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.section h2,
+.section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #38bdf8;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: #00c6ff;
+    display: block;
+    margin: 8px auto;
+    border-radius: 10px;
+}
+
+/* Grid */
+.grid,
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+}
+
+/* Cards */
+.card,
+.feature-card {
+    border-radius: 12px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.card:hover,
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.card h3,
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.card p,
+.feature-card p {
+    font-size: 14px;
+    color: #cbd5f5;
+    line-height: 1.5;
+}
+
+/* Feature Cards */
+.feature-card {
+    width: 220px;
+    height: 180px;
+    padding: 20px;
+}
+
+.feature-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.feature-card.blue {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+}
+
+.feature-card.purple {
+    background: linear-gradient(135deg, #9333ea, #6d28d9);
+}
+
+.feature-card.orange {
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+}
+
+.feature-card.green {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.feature-card p {
+    color: white;
+}
+
+/* Footer */
+.footer {
+    background: #030914;
+    padding: 40px 60px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer a {
+    color: #cbd5f5;
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    color: #94a3b8;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text,
+    .hero-image {
+        width: 100%;
+    }
+    .hero-image img {
+        margin-top: 20px;
+    }
+}
+/* CHATBOT */
+#chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #7c3aed, #ec4899);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#chatbot {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 340px;
+    height: 470px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 3000;
+    transition: all 0.3s ease;
+}
+
+.chatbot-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.chat-header {
+    background: linear-gradient(45deg, #7c3aed, #ec4899);
+    color: white;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.clear-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-message,
+.bot-message {
+    max-width: 85%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #7c3aed;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #e2e8f0;
+    color: #0f172a;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input-area {
+    display: flex;
+    border-top: 1px solid #ddd;
+    background: white;
+}
+
+#userInput {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    outline: none;
+    color: #111827;
+}
+
+.chat-input-area button {
+    border: none;
+    padding: 12px 16px;
+    background: #ff7a00;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chat-input-area button:hover {
+    background: #e96d00;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Startup AI</h2>
+    <ul>
+        <li><a href="Home.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="Learn.html"><i class="fa-solid fa-brain"></i> Learn</a></li>
+        <li><a href="Books.html"><i class="fa-solid fa-book"></i> Books</a></li>
+        <li><a href="Finance.html"><i class="fa-solid fa-chart-line"></i> Finance</a></li>
+        <li><a href="Schemes.html"><i class="fa-solid fa-landmark"></i> Schemes</a></li>
+    </ul>
+</div>
+
+<!-- Top Profile -->
+<div class="top-bar">
+<button class="profile-btn" onclick="toggleProfile()">
+    <i class="fa-solid fa-user-circle"></i>
+</button>
+
+    <div class="profile-card" id="profileCard">
+        <h3>User Profile</h3>
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="pname" disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="pemail" disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Contact</label>
+            <input type="text" id="pcontact" disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Experience</label>
+            <select id="experience" disabled>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Experienced</option>
+            </select>
+        </div>
+
+        <div class="btns">
+            <button class="edit-btn" onclick="editProfile()">Edit</button>
+            <button class="save-btn" onclick="saveProfile()">Save</button>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<!-- Page -->
+<div class="page">
+<div class="main">
+    <div class="hero">
+
+        <div class="hero-text">
+            <h1>Welcome 🚀</h1>
+            <h2>Grow Your Business with AI</h2>
+
+            <p>
+                Discover the power of AI to transform your startup.
+                Get personalized insights, access to resources, and
+                expert guidance to take your business to the next level.
+            </p>
+
+            <a href="Learn.html" class="btn">Learn with AI →</a>
+        </div>
+
+        <div class="hero-image">
+            <img src="image/Robots.jpeg" alt="Startup AI">
+        </div>
+
+    </div>
+  <div class="features-section">
+    <h2 class="section-title">Platform Features</h2>
+
+    <div class="features-container">
+
+        <div class="feature-card blue">
+            <div class="icon">🤖</div>
+            <h3><a href="Learn.html">Learn with AI</a></h3>
+            <p>Get personalized learning experiences</p>
+        </div>
+
+        <div class="feature-card orange">
+            <div class="icon">🏛️</div>
+            <h3><a href="Schemes.html">Schemes</a></h3>
+            <p>Explore government schemes</p>
+        </div>
+
+        <div class="feature-card purple">
+            <div class="icon">📚</div>
+            <h3><a href="Books.html">Books</a></h3>
+            <p>Access business books and learning resources</p>
+        </div>
+
+        <div class="feature-card green">
+            <div class="icon">📊</div>
+            <h3><a href="Finance.html">Finance</a></h3>
+            <p>Track profits and expenses</p>
+        </div>
+
+    </div>
+</div>
+</div>
+
+     <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h2>SmartStartAI</h2>
+            </div>
+
+            <div>
+                <h3>Helpful Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="report.html">Reports</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Useful Tools</h3>
+                <ul>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="schemes.html">Schemes</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>support@smartstartai.com</p>
+                <p>+91 9876543210</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 SmartStartAI</p>
+        </div>
+    </footer>
+  <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot" class="chatbot-hidden">
+        <div class="chat-header"> <span>🤖 StartSmart AI</span>
+            <div> <button class="clear-btn" onclick="clearChats()">Clear</button> <button class="close-btn"
+                    onclick="toggleChatbot()">✖</button> </div>
+        </div>
+        <div id="chat-box">
+            <div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>
+        </div>
+        <div class="chat-input-area"> <input type="text" id="userInput" placeholder="Ask your question..." /> <button
+                onclick="sendMessage()">Send</button> </div>
+    </div>
+
+     
+
+</div>
+
+<script>
+function toggleProfile() {
+    const card = document.getElementById("profileCard");
+    card.style.display = card.style.display === "block" ? "none" : "block";
+}
+
+function editProfile() {
+    pname.disabled = false;
+    pemail.disabled = false;
+    pcontact.disabled = false;
+    experience.disabled = false;
+}
+
+function saveProfile() {
+    localStorage.setItem("name", pname.value);
+    localStorage.setItem("email", pemail.value);
+    localStorage.setItem("contact", pcontact.value);
+    localStorage.setItem("experience", experience.value);
+
+    pname.disabled = true;
+    pemail.disabled = true;
+    pcontact.disabled = true;
+    experience.disabled = true;
+
+    alert("Profile Updated ✅");
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+
+window.onload = function () {
+    pname.value = localStorage.getItem("name") || "";
+    pemail.value = localStorage.getItem("email") || "";
+    pcontact.value = localStorage.getItem("contact") || "";
+    experience.value = localStorage.getItem("experience") || "";
+}
+   /* ================= CHATBOT ================= */
+
+        function toggleChatbot() {
+            document.getElementById("chatbot").classList.toggle("chatbot-hidden");
+        }
+
+        function saveChats() {
+            localStorage.setItem("startsmart_chat", document.getElementById("chat-box").innerHTML);
+        }
+
+        function loadChats() {
+            const saved = localStorage.getItem("startsmart_chat");
+            const chatBox = document.getElementById("chat-box");
+
+            if (!chatBox) return;
+
+            chatBox.innerHTML = saved ||
+                `<div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>`;
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function clearChats() {
+            localStorage.removeItem("startsmart_chat");
+            loadChats();
+        }
+
+        async function sendMessage() {
+            const inputEl = document.getElementById("userInput");
+            const chatBox = document.getElementById("chat-box");
+
+            if (!inputEl || !chatBox) return;
+
+            const input = inputEl.value.trim();
+            if (!input) return;
+
+            // User message
+            const userMsg = document.createElement("div");
+            userMsg.className = "user-message";
+            userMsg.innerText = input;
+            chatBox.appendChild(userMsg);
+
+            inputEl.value = "";
+
+            // Loading message
+            const loading = document.createElement("div");
+            loading.className = "bot-message";
+            loading.innerText = "Typing...";
+            chatBox.appendChild(loading);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveChats();
+
+            try {
+                const res = await fetch("http://localhost:5000/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: input })
+                });
+
+                if (!res.ok) throw new Error("Server response failed");
+
+                const data = await res.json();
+                loading.innerText = data.reply || "No response from AI.";
+
+            } catch (err) {
+                loading.innerText = "⚠️ Server error. Check backend.";
+                console.error(err);
+            }
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            saveChats();
+        }
+</script>
+
+</body>
+</html>

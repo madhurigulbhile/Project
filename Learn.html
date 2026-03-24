@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn with AI - StartSmart AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    header h2 {
+      color: white;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: #cbd5f5;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .hero-box {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero-box h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .hero-box p {
+      color: #cbd5f5;
+      font-size: 17px;
+    }
+
+    .learn-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .topics, .chat-section {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .topics h3,
+    .chat-section h3 {
+      margin-bottom: 15px;
+    }
+
+    .topic-btn {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #7c3aed, #ec4899);
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .topic-btn:hover {
+      opacity: 0.9;
+    }
+
+    #chat-box {
+      height: 420px;
+      overflow-y: auto;
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    #chat-box p {
+      color: black;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      color: black;
+    }
+
+    .send-btn, .small-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      color: white;
+      background: linear-gradient(45deg, #7c3aed, #ec4899);
+      padding: 12px 18px;
+    }
+
+    .quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .small-btn {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .learn-layout {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+      }
+
+      .hero-box h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>StartSmart AI</h2>
+    <nav>
+            <a href="Dashboard.html">Home</a>
+            <a href="learn.html">Learn with AI</a>
+            <a href="books.html">Books</a>
+            <a href="finance.html">Finance</a>
+            <a href="schemes.html">Schemes</a>
+            <a href="aboutus.html">About Us</a> 
+    </nav>
+  </header>
+
+  <div class="main">
+    <div class="hero-box">
+      <h1>Learn Business Model Development with AI</h1>
+      <p>Study step by step with lessons, examples, quizzes, and practice.</p>
+    </div>
+
+    <div class="learn-layout">
+      <div class="topics">
+        <h3>Topics</h3>
+
+        <button class="topic-btn" onclick="quickMessage('Teach me business model development from basics')">Introduction</button>
+        <button class="topic-btn" onclick="quickMessage('Explain business idea vs business model')">Idea vs Business Model</button>
+        <button class="topic-btn" onclick="quickMessage('Teach me customer segments with example')">Customer Segments</button>
+        <button class="topic-btn" onclick="quickMessage('Teach me value proposition with example')">Value Proposition</button>
+        <button class="topic-btn" onclick="quickMessage('Teach me revenue streams simply')">Revenue Streams</button>
+        <button class="topic-btn" onclick="quickMessage('Explain cost structure simply')">Cost Structure</button>
+        <button class="topic-btn" onclick="quickMessage('Explain business model canvas simply')">Business Model Canvas</button>
+        <button class="topic-btn" onclick="quickMessage('Give me a quiz on business model development')">Quiz</button>
+      </div>
+
+      <div class="chat-section">
+        <h3>AI Tutor</h3>
+
+        <div id="chat-box"></div>
+
+        <div class="input-row">
+          <input type="text" id="userInput" placeholder="Ask something about business model development..." />
+          <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+
+        <div class="quick-buttons">
+          <button class="small-btn" onclick="quickMessage('Teach me business model development from basics')">Start</button>
+          <button class="small-btn" onclick="quickMessage('Give me a simple example')">Example</button>
+          <button class="small-btn" onclick="quickMessage('Ask me a quiz')">Quiz</button>
+          <button class="small-btn" onclick="quickMessage('Next topic')">Next</button>
+          <button class="small-btn" onclick="clearChats()">Clear Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 StartSmart AI | Learn with AI</p>
+  </footer>
+
+  <script>
+    function saveChats() {
+      localStorage.setItem("learn_ai_chat", document.getElementById("chat-box").innerHTML);
+    }
+
+    function loadChats() {
+      const saved = localStorage.getItem("learn_ai_chat");
+      const chatBox = document.getElementById("chat-box");
+
+      if (saved) {
+        chatBox.innerHTML = saved;
+      } else {
+        chatBox.innerHTML = `
+          <p><b>AI:</b> Welcome to Learn with AI 📘</p>
+          <p><b>AI:</b> I will teach you Business Model Development step by step.</p>
+          <p><b>AI:</b> Click a topic or type: <i>Teach me business model development from basics</i></p>
+        `;
+      }
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function clearChats() {
+      localStorage.removeItem("learn_ai_chat");
+      loadChats();
+    }
+
+    function quickMessage(text) {
+      document.getElementById("userInput").value = text;
+      sendMessage();
+    }
+
+    async function sendMessage() {
+      const inputEl = document.getElementById("userInput");
+      const chatBox = document.getElementById("chat-box");
+      const input = inputEl.value.trim();
+
+      if (!input) return;
+
+      chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+      inputEl.value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+      saveChats();
+
+      chatBox.innerHTML += `<p id="loading"><b>AI:</b> Typing...</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const res = await fetch("http://localhost:5000/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: input,
+            mode: "learn"
+          })
+        });
+
+        const data = await res.json();
+
+        const loading = document.getElementById("loading");
+        if (loading) {
+          loading.remove();
+        }
+
+        chatBox.innerHTML += `<p><b>AI:</b> ${data.reply}</p>`;
+      } catch (error) {
+        const loading = document.getElementById("loading");
+        if (loading) {
+          loading.remove();
+        }
+
+        chatBox.innerHTML += `<p><b>AI:</b> Error connecting to server.</p>`;
+      }
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+      saveChats();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      loadChats();
+
+      document.getElementById("userInput").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

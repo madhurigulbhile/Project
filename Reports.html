@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Business Finance Reports</title>
+
+<link rel="stylesheet" href="Reports.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Montserrat:wght@500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"> 
+
+</head>
+
+<body>
+    
+    <div class="pageBanner">
+<nav class="navbar">
+<h2>Financial Trends</h2>
+
+
+
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Finance.html">Dashboard</a></li>
+<li><a href="records.html">Records</a></li>
+<li><a href="Reports.html">Reports</a></li>
+<LI><a href="Aboutus.html">About Us</a></LI>
+
+</ul>
+
+</nav>
+</div>
+<div class="introSection">
+
+<div class="introImage">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2331/2331966.png" alt="analytics">
+<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="bar chart">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="finance growth">
+<img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="pie chart">
+
+</div>
+
+<div class="introText">
+
+<h2>Understand Your Financial Trends</h2>
+
+<p>
+Track revenue, expenses, profit, and loss through weekly,
+monthly, and yearly analytics to improve your business decisions.
+</p>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<!-- your hero section content -->
+
+</div>
+
+
+
+
+<div class="titleBox">
+<h1 class="title">Financial Trends</h1>
+</div>
+
+
+
+</section>
+
+</div>
+<div class="hero">
+
+<div class="financeIcons">
+
+<div class="icon">📊</div>
+<div class="icon">💰</div>
+<div class="icon">📈</div>
+<div class="icon">💳</div>
+<div class="icon">🏦</div>
+<div class="icon">📉</div>
+
+</div>
+
+</div>
+
+
+
+<p class="subtitle">
+Track your revenue, monitor expenses, and make smarter business decisions with real-time financial insights.
+</p>
+
+<div class="cards">
+
+<div class="card revenue">
+<div class="cardIcon">📈</div>
+<h3>Revenue Growth</h3>
+<p>Monitor how your business income grows and track financial performance.</p>
+</div>
+
+<div class="card expense">
+<div class="cardIcon">💳</div>
+<h3>Expense Tracking</h3>
+<p>Analyze spending patterns and control unnecessary business expenses.</p>
+</div>
+
+<div class="card profit">
+<div class="cardIcon">💰</div>
+<h3>Profit Insights</h3>
+<p>Understand profitability trends and improve business decision-making.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="divider"></div>
+
+
+<div class="selector">
+<label>Select Time Period :</label>
+
+<select id="timeSelector" onchange="showSection()">
+<option value="weekly">Weekly</option>
+<option value="monthly">Monthly</option>
+<option value="yearly">Yearly</option>
+</select>
+</div>
+
+
+<!-- WEEKLY SECTION -->
+
+<div id="weekly" class="section">
+
+<h2>📅 Weekly Financial Overview</h2>
+
+<div class="tableBox">
+
+<table>
+<thead>
+<tr>
+<th>Day</th>
+<th>Revenue</th>
+<th>Expense</th>
+<th>Profit</th>
+<th>Loss</th>
+</tr>
+</thead>
+
+<tbody id="weeklyBody"></tbody>
+</table>
+
+</div>
+
+<canvas id="weeklyPie"></canvas>
+
+</div>
+
+
+
+<!-- MONTHLY SECTION -->
+
+<div id="monthly" class="section">
+
+<h2>📊 Monthly Financial Overview</h2>
+
+<div class="tableBox">
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Revenue</th>
+<th>Expense</th>
+</tr>
+
+<tbody id="monthlyBody"></tbody>
+</table>
+
+</div>
+
+<canvas id="monthlyBar"></canvas>
+
+</div>
+
+
+
+<!-- YEARLY SECTION -->
+
+<div id="yearly" class="section">
+
+<h2>📈 Yearly Financial Overview</h2>
+
+<div class="tableBox">
+
+<table>
+
+<tr>
+<th>Year</th>
+<th>Revenue</th>
+<th>Expense</th>
+</tr>
+<tbody id="yearlyBody"></tbody>
+
+</table>
+
+</div>
+
+<canvas id="yearlyPie"></canvas>
+
+</div>
+
+</div>
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<!-- Logo -->
+<div class="footer-section">
+<h2 class="footer-logo">SmartStartAI</h2>
+</div>
+
+<!-- Helpful Links -->
+<div class="footer-section">
+<h3>Helpful Links</h3>
+<ul>
+<li><a href="Home.html">Home</a></li>
+<li><a href="Finance.html">Dashboard</a></li>
+<li><a href="Reports.html">Reports</a></li>
+<li><a href="Aboutus.html">About Us</a></li>
+</ul>
+</div>
+
+<!-- Useful Tools -->
+<div class="footer-section">
+<h3>Useful Tools</h3>
+<ul>
+<li><a href="Books.html">Books</a></li>
+<li><a href="Schemes.html">Schemes</a></li>
+<li><a href="Finance.html">Finance Tracker</a></li>
+</ul>
+</div>
+
+<!-- Contact Us -->
+<div class="footer-section">
+<h3>Contact Us</h3>
+<p>Email: support@smartstartai.com</p>
+<p>Phone: +91 9876543210</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 SmartStartAI | All Rights Reserved</p>
+</div>
+
+</footer>
+  <div id="chat-toggle" onclick="toggleChatbot()">💬</div>
+    <div id="chatbot" class="chatbot-hidden">
+        <div class="chat-header"> <span>🤖 StartSmart AI</span>
+            <div> <button class="clear-btn" onclick="clearChats()">Clear</button> <button class="close-btn"
+                    onclick="toggleChatbot()">✖</button> </div>
+        </div>
+        <div id="chat-box">
+            <div class="bot-message">Hello! Ask me about startup ideas, finance, or business planning.</div>
+        </div>
+        <div class="chat-input-area"> <input type="text" id="userInput" placeholder="Ask your question..." /> <button
+                onclick="sendMessage()">Send</button> </div>
+    </div>
+<script src="Reports.js"></script>
+
+</body>
+</html>
